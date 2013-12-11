@@ -1,0 +1,210 @@
+Useful commands
+
+All processes by user is long format
+ps -u user -f
+
+Show tree of all processes
+pstree
+
+Kill all processes for a given command
+killall [commmand]
+
+Disk usage in human readable
+df -h
+
+Display linux version info
+uname -a
+
+Display cpu info
+cat /proc/cpuinfo
+
+Display mem info
+cat /proc/meminfo
+
+sar -u CPU
+sar -r Memory
+sar -S Swap
+sar -b I/O
+sar -d Device I/O
+sar -w Context switch
+sar -q Runtime Queue/Load
+sar -n KEYWORD Network
+
+Systat Package - includes sar and other utilities
+/etc/cron.d/systat - cron file with sar entries
+
+Default Red Hat Config
+# Run system activity accounting tool every 10 minutes
+*/10 * * * * root /usr/lib64/sa/sa1 -S DISK 1 1
+# 0 * * * * root /usr/lib64/sa/sa1 -S DISK 600 6 &
+# Generate a daily summary of process accounting at 23:53
+53 23 * * * root /usr/lib64/sa/sa2 -A
+
+Display storage devices
+cat /proc/partitions
+
+List partition information
+fdisk -l
+
+Partition Editor
+fdisk <device>
+
+Format the partition
+mkfs.ext3 /dev/sdb1
+
+Mount a partition
+mount /dev/sdb1 /<path>
+
+Unmount a partition
+umount /dev/sdb1
+
+A directory must exist to mount a partition. If there is data in the directory where the partition is mounted, it will not be deleted, but will be hidden
+
+Good /etc/fstab info
+http://www.tuxfiles.org/linuxhelp/fstab.html
+
+Networking:
+monitor usage: sar -n DEV [interval] [samples]
+
+
+Text Processing:
+Extract lines between line numbers
+sed -n '7530,9414 p'
+
+Find
+find [directory] -name 'regex' -print
+find [directory] -type -f -print
+find [directory] -type -d -print
+find [directory] -size +5c -10c 
+
+OS Low Level Stuff
+To free pagecache:
+
+    echo 1 > /proc/sys/vm/drop_caches
+
+To free dentries and inodes:
+
+    echo 2 > /proc/sys/vm/drop_caches
+
+To free pagecache, dentries and inodes:
+
+    echo 3 > /proc/sys/vm/drop_caches
+	
+Bash Stuff:
+
+to execute a command using the same process from a script:
+//foo.sh
+exec [command]
+
+This is awesome because you don't have a bash process and a command subprocess, just a single process
+
+Get directory script is in
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+Debian Stuff:
+
+search for package 
+apt-cache search
+
+show details of package
+apt-cache show package_name
+apt-cache showpkg package_name
+
+install package
+apt-get install package_name
+
+
+What do the numbers mean after a command name in man page?
+    Common UNIX command that can be used by all users. e.g. ls(1)
+    Unix and C system calls e.g. mmap(2)
+    C library routines for C programs e.g. system(3)
+    Special files e.g. sudoers(4)
+    System file formats e.g. lmhosts(5)
+    Games e.g. fortune(6)
+    Miscellaneous e.g. regex(7)
+    System administration commands that is run by root only e.g. iwconfig(8)
+    (?Linux specific) e.g.ksoftirqd(9)
+	
+/etc/environment - The first file that the operating system uses at login time, specifcy basic variables for all processes
+
+Add user to group
+usermod -a -G ftp tony
+
+
+Go to previous directory
+cd -
+
+~- Expands to previous directory
+
+Remote SSH
+ssh user@host "PUT COMMAND HERE"
+
+
+TMUX:
+~/.tmux.conf
+set -g prefix C-a
+
+ctrl-a " - horizontal split
+ctrl-a % - vert split
+ctrl-a ; - last pane
+ctrl-a o - next pane
+ctrl-a q - show pane nums
+ctrl-a : - command mode
+ctrl-a [ - scroll mode
+ctrl-a x - close current pane
+
+ctrl-a w - list windows
+ctrl-a c - new window
+ctrl-a & - kill window
+
+:resize-pane -D 20 -- resize pane down 20
+
+Bash History
+history - list history
+history n - list last n
+![n] - execute command n from history
+!-[n] - execute n command ago
+!! - execute previous command
+![s] - execute last command that starts with s
+!?[s] - execute last command containing s
+
+Bash Arrays
+arr=(one two three four five)
+${arr[*]}         # All of the items in the array
+${!arr[*]}        # All of the indexes in the array
+${#arr[*]}        # Number of items in the array
+${#arr[0]}        # Length of item zero
+
+CUT:
+cut -d ':' -f1 (or -f2 or -f2-)
+
+SSH No Password:
+ssh-keygen -t rsa
+ssh USER@HOST 'mkdir -p .ssh; chmod 755 .ssh; touch .ssh/authorized_keys; chmod 644 .ssh/authorized_keys'
+cat .ssh/id_rsa.pub | ssh USER@HOST 'cat >> ~/.ssh/authorized_keys'
+
+
+Archive and compress a remote directory and write to local machine
+ssh user@host "tar cz [dir]" > file.tar.gz
+
+List archive
+tar tvf file
+
+Create compressed archive
+tar cvzf file file2
+
+Extract compressed archive
+tar xvzf file
+
+RPM
+list all installed packages : rpm -qa
+
+APT
+list all installed packages : dpkg --get-selections | grep -v deinstall
+
+Move a process to the background:
+Ctrl - z
+bg
+
+alias - list current aliases
+alias name='command'
