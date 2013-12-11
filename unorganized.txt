@@ -208,3 +208,6 @@ bg
 
 alias - list current aliases
 alias name='command'
+
+init.d
+/etc/init.d/[service] status|start|stop|restart
