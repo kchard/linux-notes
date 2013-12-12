@@ -8,4 +8,4 @@ Resource links and notes related to Linux
 - [Debian LXC](https://wiki.debian.org/LXC)
 - [Debian LXC Template](https://github.com/simonvanderveldt/lxc-debian-wheezy-template)
 - [Debian LXC - SimpleBridge](https://wiki.debian.org/LXC/SimpleBridge)
-
+- [Wheezy Install](http://cblog.burkionline.net/lxc-linux-container/)
