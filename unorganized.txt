@@ -211,3 +211,9 @@ alias name='command'
 
 init.d
 /etc/init.d/[service] status|start|stop|restart
+
+
+VIM
+:%s/foo/bar/g - global search replace
+:%s/foo/bar/gc - interactive search replace
+
