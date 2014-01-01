@@ -220,3 +220,5 @@ VIM
 
 Make multiple directories
 mkdir -p foo/{bar,baz} 
+
+tree - visual representation of dir
