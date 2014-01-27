@@ -222,3 +222,6 @@ Make multiple directories
 mkdir -p foo/{bar,baz} 
 
 tree - visual representation of dir
+
+Sum some values with awk
+SOME_COMMAND | awk '{ sum+=$1 } END { print sum }'
