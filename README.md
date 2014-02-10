@@ -15,5 +15,5 @@ Resource links and notes related to Linux
 - [Guest Addons](https://gist.github.com/bdsatish/6215366)
 - ~/.config/openbox/autostart -> xrandr --output default --mode 1920x1080 &
 
-** vim **
+**vim**
 - [Vim Tutorial](http://www.danielmiessler.com/study/vim)
