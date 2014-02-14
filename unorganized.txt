@@ -225,3 +225,9 @@ tree - visual representation of dir
 
 Sum some values with awk
 SOME_COMMAND | awk '{ sum+=$1 } END { print sum }'
+
+
+Display all service status
+service --status-all
+service --status-all | grep running
+service --status-all | grep stopped
