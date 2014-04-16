@@ -16,4 +16,7 @@ Resource links and notes related to Linux
 - ~/.config/openbox/autostart -> xrandr --output default --mode 1920x1080 &
 
 **vim**
-- [Vim Tutorial](http://www.danielmiessler.com/study/vim)
+- [Vim Tutorial](http://www.danielmiessler.com/study/vim) 
+
+**bash**
+- [Bash Tips](http://robertmuth.blogspot.com/2012/08/better-bash-scripting-in-15-minutes.html)
